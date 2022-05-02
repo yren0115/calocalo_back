@@ -11,6 +11,7 @@ public class AdminEntity {
 
 	@Id
 	private int admin_id;
+	
 	@Column
 	private String admin_status;
 	
