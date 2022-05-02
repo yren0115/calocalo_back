@@ -15,7 +15,7 @@ public class FoodListJoinNutritionEntity {
 	private int food_id;
 	
 	@Column
-	private int food_name;
+	private String food_name;
 	
 	@ManyToOne
 	@JoinColumn(name = "nutrition_id", referencedColumnName = "nutrition_id")
@@ -29,11 +29,11 @@ public class FoodListJoinNutritionEntity {
 		this.food_id = food_id;
 	}
 
-	public int getFood_name() {
+	public String getFood_name() {
 		return food_name;
 	}
 
-	public void setFood_name(int food_name) {
+	public void setFood_name(String food_name) {
 		this.food_name = food_name;
 	}
 
@@ -44,4 +44,6 @@ public class FoodListJoinNutritionEntity {
 	public void setNutritionEntity(NutritionEntity nutritionEntity) {
 		this.nutritionEntity = nutritionEntity;
 	}
+
+	
 }
