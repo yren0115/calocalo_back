@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import jp.co.calocalo.entity.FoodListEntity;
 
-public interface FoodListJoinNutritionRepository extends JpaRepository<FoodListEntity, Integer> {
+public interface FoodListRepository extends JpaRepository<FoodListEntity, Integer> {
 
 }

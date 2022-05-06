@@ -9,40 +9,40 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jp.co.calocalo.entity.FoodListJoinNutritionEntity;
-import jp.co.calocalo.repository.FoodListJoinNutritionRepository;
+import jp.co.calocalo.entity.FoodListEntity;
+import jp.co.calocalo.repository.FoodListRepository;
 
 @RestController
 @RequestMapping("/mypage")
 public class MainRestController {
 	
 	@Autowired
-	FoodListJoinNutritionRepository foodListJoinNutritionRepository;
+	FoodListRepository foodListRepository;
 	
 	
 //	@GetMapping
 //	public String mypage() {
 //		
-////		List<FoodListJoinNutritionEntity> foodList = new ArrayList<>();
-////		foodList = foodListJoinNutritionRepository.findAll();
-//		
-//		
-////		FoodListJoinNutritionEntity foodList = new FoodListJoinNutritionEntity();
-//		
-////		foodList.addAll(foodListJoinNutritionRepository.findAll());
-//		
-//		
-////		long num = foodListJoinNutritionRepository.count();		
+//		List<FoodListEntity> foodList = new ArrayList<>();
+////		foodList = foodListRepository.findAll();
+////		
+////		
+////		FoodListEntity foodList = new FoodListEntity();
+////		
+////		foodList.addAll(foodListRepository.findAll());
+////		
+////		
+////		long num = foodListRepository.count();		
 ////		for (int i = 1; i < num; i++) {
 ////			
-////			foodList.add(foodListJoinNutritionRepository.getById(i));
+////			foodList.add(foodListRepository.getById(i));
 //////			foodList.getFood_name();
 ////		}
 //		
-//		long num = foodListJoinNutritionRepository.count();		
+//		long num = foodListRepository.count();		
 //		for (int i = 1; i < num; i++) {
 //		
-//		FoodListJoinNutritionEntity foodList = foodListJoinNutritionRepository.getById(i);
+//		FoodListEntity foodList = foodListRepository.getById(i);
 //		int foodId = foodList.getFood_id();
 //		String foodName = foodList.getFood_name();
 //		
@@ -53,14 +53,14 @@ public class MainRestController {
 //		
 //		return "1";
 //	}
-	
+//	
 	
 	@GetMapping
-	public Map<String, List<FoodListJoinNutritionEntity>> toppage() {
+	public Map<String, List<FoodListEntity>> mypage() {
 		
-		List<FoodListJoinNutritionEntity> foodList = foodListJoinNutritionRepository.findAll();
+		List<FoodListEntity> foodList = foodListRepository.findAll();
 		
-		Map<String, List<FoodListJoinNutritionEntity>> foodListJson = new HashMap<>();
+		Map<String, List<FoodListEntity>> foodListJson = new HashMap<>();
 		foodListJson.put("food_list", foodList);
 		
 		return foodListJson;

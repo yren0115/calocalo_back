@@ -2,17 +2,17 @@ package jp.co.calocalo.controller;
 
 import java.util.List;
 
-import jp.co.calocalo.entity.FoodListJoinNutritionEntity;
+import jp.co.calocalo.entity.FoodListEntity;
 
 public class FoodList {
 
-	List<FoodListJoinNutritionEntity> foodList;
+	List<FoodListEntity> foodList;
 
-	public List<FoodListJoinNutritionEntity> getFoodList() {
+	public List<FoodListEntity> getFoodList() {
 		return foodList;
 	}
 
-	public void setFoodList(List<FoodListJoinNutritionEntity> foodList) {
+	public void setFoodList(List<FoodListEntity> foodList) {
 		this.foodList = foodList;
 	}
 	
