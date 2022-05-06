@@ -15,11 +15,7 @@ public class EmployeesJoinAdminEntity {
 	private int emp_id;
 	
 	@Column
-<<<<<<< HEAD
-	private int goal_calorie;
-=======
 	private int goal_calories;
->>>>>>> da7870820b90a264d99c05e19ebdd7f9e2371bdc
 	
 	@ManyToOne
 	@JoinColumn(name = "admin_id", referencedColumnName = "admin_id")
@@ -39,21 +35,12 @@ public class EmployeesJoinAdminEntity {
 		this.emp_id = emp_id;
 	}
 
-<<<<<<< HEAD
-	public int getGoal_calorie() {
-		return goal_calorie;
-	}
-
-	public void setGoal_calorie(int goal_calorie) {
-		this.goal_calorie = goal_calorie;
-=======
 	public int getGoal_calories() {
 		return goal_calories;
 	}
 
 	public void setGoal_calories(int goal_calories) {
 		this.goal_calories = goal_calories;
->>>>>>> da7870820b90a264d99c05e19ebdd7f9e2371bdc
 	}
 
 	public AdminEntity getAdminEntity() {
@@ -79,5 +66,7 @@ public class EmployeesJoinAdminEntity {
 	public void setIs_delete(boolean is_delete) {
 		this.is_delete = is_delete;
 	}
+
+	
 }
 	

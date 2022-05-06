@@ -1,6 +1,6 @@
 package jp.co.calocalo.controller;
 
-public class MainRestController {
+public class FoodListController {
 	
-
+	
 }
