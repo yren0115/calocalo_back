@@ -22,7 +22,7 @@ public class CaloriesRecordsJoinEmployeesAndFoodListEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "food_id", referencedColumnName = "food_id")
-	private FoodListJoinNutritionEntity foodListJoinNutritionEntity;
+	private FoodListEntity foodListEntity;
 	
 	@Column
 	private Date date;
@@ -43,12 +43,12 @@ public class CaloriesRecordsJoinEmployeesAndFoodListEntity {
 		this.employeesJoinAdminEntity = employeesJoinAdminEntity;
 	}
 
-	public FoodListJoinNutritionEntity getFoodListJoinNutritionEntity() {
-		return foodListJoinNutritionEntity;
+	public FoodListEntity getFoodListEntity() {
+		return foodListEntity;
 	}
 
-	public void setFoodListJoinNutritionEntity(FoodListJoinNutritionEntity foodListJoinNutritionEntity) {
-		this.foodListJoinNutritionEntity = foodListJoinNutritionEntity;
+	public void setFoodListEntity(FoodListEntity foodListEntity) {
+		this.foodListEntity = foodListEntity;
 	}
 
 	public Date getDate() {
