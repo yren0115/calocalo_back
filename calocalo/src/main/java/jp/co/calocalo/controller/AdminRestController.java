@@ -6,23 +6,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jp.co.calocalo.entity.FoodListJoinNutritionEntity;
-import jp.co.calocalo.entity.NutritionEntity;
+import jp.co.calocalo.entity.FoodListEntity;
 import jp.co.calocalo.form.AdminFoodListForm;
 import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
-import jp.co.calocalo.repository.FoodListJoinNutritionRepository;
+import jp.co.calocalo.repository.FoodListRepository;
 
 @RestController
 @RequestMapping("/admin")
 class AdminRestController {
 
-	@Autowired FoodListJoinNutritionRepository foodListJoinNutritionRepository;
+	@Autowired FoodListRepository foodListRepository;
 	@Autowired EmployeesJoinAdminRepository employeesJoinAdminRepository;
 	
 	@PostMapping
 	public void registFoodAndCalories(AdminFoodListForm adminFoodListForm) {
-		FoodListJoinNutritionEntity foodListJoinNutritionEntity = formToAddFoodListNutritionEntity(adminFoodListForm);
-		foodListJoinNutritionRepository.save(foodListJoinNutritionEntity);
+		FoodListEntity foodListEntity = formToAddFoodListEntity(adminFoodListForm);
+		foodListRepository.save(foodListEntity);
 	}
 	
 	@DeleteMapping
@@ -30,14 +29,12 @@ class AdminRestController {
 		employeesJoinAdminRepository.deleteById(empId);
 	}
 	
-	private FoodListJoinNutritionEntity formToAddFoodListNutritionEntity(AdminFoodListForm adminFoodList) {
+	private FoodListEntity formToAddFoodListEntity(AdminFoodListForm adminFoodList) {
 		
-		FoodListJoinNutritionEntity foodListJoinNutrition = new FoodListJoinNutritionEntity();
-		foodListJoinNutrition.setFood_name(adminFoodList.getFood_name());
-		
-		NutritionEntity nutrition = new NutritionEntity();
-		nutrition.setCalories(adminFoodList.getCalories());
-		foodListJoinNutrition.setNutritionEntity(nutrition);
-		return foodListJoinNutrition;
+		FoodListEntity foodListEntity = new FoodListEntity();
+		foodListEntity.setFood_name(adminFoodList.getFood_name());
+		foodListEntity.setCalories(adminFoodList.getCalories());
+
+		return foodListEntity;
 	}
 }
