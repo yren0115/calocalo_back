@@ -1,21 +1,25 @@
 package jp.co.calocalo.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jp.co.calocalo.Dto.MypageDto;
+import jp.co.calocalo.entity.EmployeesJoinAdminEntity;
 import jp.co.calocalo.entity.FoodListEntity;
+import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
 import jp.co.calocalo.repository.FoodListRepository;
 
 @RestController
-@RequestMapping("/mypage")
+@RequestMapping("/mypage/{emp_id}")
 public class MainRestController {
 	
+	@Autowired
+	EmployeesJoinAdminRepository employeesRepository;
 	@Autowired
 	FoodListRepository foodListRepository;
 	
@@ -56,14 +60,25 @@ public class MainRestController {
 //	
 	
 	@GetMapping
-	public Map<String, List<FoodListEntity>> mypage() {
+	public String mypage(@PathVariable int emp_id) {
+		
+		MypageDto mypageDto = new MypageDto();
 		
 		List<FoodListEntity> foodList = foodListRepository.findAll();
 		
-		Map<String, List<FoodListEntity>> foodListJson = new HashMap<>();
-		foodListJson.put("food_list", foodList);
+		EmployeesJoinAdminEntity user = employeesRepository.getById(emp_id);
 		
-		return foodListJson;
+		int nowEmpId = user.getEmp_id ();
+		int nowEmpGoalCalorie = user.getGoal_calorie();
+		
+		
+		
+		
+		
+		
+		mypageDto.setFoodList(foodList);
+		
+		return "";
 	}
 
 
