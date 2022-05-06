@@ -15,7 +15,7 @@ public class EmployeesJoinAdminEntity {
 	private int emp_id;
 	
 	@Column
-	private int goal_id;
+	private int goal_calories;
 	
 	@ManyToOne
 	@JoinColumn(name = "admin_id", referencedColumnName = "admin_id")
@@ -35,12 +35,12 @@ public class EmployeesJoinAdminEntity {
 		this.emp_id = emp_id;
 	}
 
-	public int getGoal_id() {
-		return goal_id;
+	public int getGoal_calories() {
+		return goal_calories;
 	}
 
-	public void setGoal_id(int goal_id) {
-		this.goal_id = goal_id;
+	public void setGoal_calories(int goal_calories) {
+		this.goal_calories = goal_calories;
 	}
 
 	public AdminEntity getAdminEntity() {

@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -11,18 +13,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "calories_records")
-public class CaloriesRecordsJoinEmployeesAndFoodListEntity {
+public class CaloriesRecordsJoinEmployeesEntity {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int record_id;
 	
 	@ManyToOne
 	@JoinColumn(name = "emp_id", referencedColumnName = "emp_id")
 	private EmployeesJoinAdminEntity employeesJoinAdminEntity;
 	
-	@ManyToOne
-	@JoinColumn(name = "food_id", referencedColumnName = "food_id")
-	private FoodListEntity foodListEntity;
+	@Column
+	private int tatal_calories;
 	
 	@Column
 	private Date date;
@@ -42,13 +44,13 @@ public class CaloriesRecordsJoinEmployeesAndFoodListEntity {
 	public void setEmployeesJoinAdminEntity(EmployeesJoinAdminEntity employeesJoinAdminEntity) {
 		this.employeesJoinAdminEntity = employeesJoinAdminEntity;
 	}
-
-	public FoodListEntity getFoodListEntity() {
-		return foodListEntity;
+	
+	public int getTatal_calories() {
+		return tatal_calories;
 	}
 
-	public void setFoodListEntity(FoodListEntity foodListEntity) {
-		this.foodListEntity = foodListEntity;
+	public void setTatal_calories(int tatal_calories) {
+		this.tatal_calories = tatal_calories;
 	}
 
 	public Date getDate() {
@@ -58,6 +60,4 @@ public class CaloriesRecordsJoinEmployeesAndFoodListEntity {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
-	
 }
