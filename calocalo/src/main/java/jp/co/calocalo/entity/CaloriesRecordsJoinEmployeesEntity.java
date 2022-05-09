@@ -4,19 +4,21 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.lang.Nullable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "calories_records")
 public class CaloriesRecordsJoinEmployeesEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int record_id;
 	
 	@ManyToOne
@@ -24,9 +26,11 @@ public class CaloriesRecordsJoinEmployeesEntity {
 	private EmployeesJoinAdminEntity employeesJoinAdminEntity;
 	
 	@Column
-	private int tatal_calories;
+	@Nullable
+	private int total_calories;
 	
 	@Column
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 
 	public int getRecord_id() {
@@ -44,13 +48,13 @@ public class CaloriesRecordsJoinEmployeesEntity {
 	public void setEmployeesJoinAdminEntity(EmployeesJoinAdminEntity employeesJoinAdminEntity) {
 		this.employeesJoinAdminEntity = employeesJoinAdminEntity;
 	}
-	
-	public int getTatal_calories() {
-		return tatal_calories;
+
+	public int getTotal_calories() {
+		return total_calories;
 	}
 
-	public void setTatal_calories(int tatal_calories) {
-		this.tatal_calories = tatal_calories;
+	public void setTotal_calories(int total_calories) {
+		this.total_calories = total_calories;
 	}
 
 	public Date getDate() {
@@ -60,4 +64,6 @@ public class CaloriesRecordsJoinEmployeesEntity {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	
 }
