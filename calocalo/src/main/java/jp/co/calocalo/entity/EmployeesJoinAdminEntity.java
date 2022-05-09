@@ -18,14 +18,14 @@ public class EmployeesJoinAdminEntity {
 	private int goal_calories;
 	
 	@ManyToOne
-	@JoinColumn(name = "admin_id", referencedColumnName = "admin_id")
+	@JoinColumn(name = "admin", referencedColumnName = "admin_id")
 	private AdminEntity adminEntity;
 	
 	@Column
 	private String password;
 	
 	@Column
-	private boolean is_delete;
+	private boolean is_deleted;
 
 	public int getEmp_id() {
 		return emp_id;
@@ -59,12 +59,16 @@ public class EmployeesJoinAdminEntity {
 		this.password = password;
 	}
 
-	public boolean isIs_delete() {
-		return is_delete;
+	public boolean isIs_deleted() {
+		return is_deleted;
 	}
 
-	public void setIs_delete(boolean is_delete) {
-		this.is_delete = is_delete;
+	public void setIs_deleted(boolean is_deleted) {
+		this.is_deleted = is_deleted;
+	}
+
+	public int getEmpAdminId() {
+		return getAdminEntity().getAdmin_id();
 	}
 
 	

@@ -19,35 +19,46 @@ public class LoginController {
 	EmployeesJoinAdminRepository employeesRepository;
 	
 	
-	@PostMapping("{emp_id}")
+	@PostMapping("/{emp_id}")
 	public LoginDto loginCheck(@PathVariable int emp_id,LoginForm loginForm) {
 		
-		
-		if(employeesRepository.existsById(loginForm.getEmpId())) {
+		if(employeesRepository.existsById(emp_id)) {
 			
 			EmployeesJoinAdminEntity employee =  employeesRepository.getById(emp_id);
 			
 			String empPass = employee.getPassword();
 			
-			if(loginForm.getPassword().equals(empPass)) {
+			if(loginForm.getPassword().equals(empPass) && employee.isIs_deleted() == false) {
 				
 				LoginDto loginDto = new LoginDto();
+				
+				int empAdminId = employee.getEmpAdminId();
+				
 				loginDto.setLogin_status(true);
-				int empAdminStatus = 1;
-				loginDto.setAdmin_status(empAdminStatus);
+				int employeeAdminId = empAdminId;
+				loginDto.setAdmin_id(employeeAdminId);
 				
 				return loginDto;
 			}else {
 				LoginDto loginDto = new LoginDto();
+				
 				loginDto.setLogin_status(false);
+				int employeeAdminId = 000;
+				loginDto.setAdmin_id(employeeAdminId);
 				
 				return loginDto;
 			}
+		}else {
+			
+			LoginDto loginDto = new LoginDto();
+			
+			loginDto.setLogin_status(false);
+			int employeeAdminId = 000;
+			loginDto.setAdmin_id(employeeAdminId);
+			
+			return loginDto;
+			
 		}
-		
-		 LoginDto loginDto = new LoginDto();
-		 loginDto.setLogin_status(false);
-		 return loginDto;
 		
 	}
 	
