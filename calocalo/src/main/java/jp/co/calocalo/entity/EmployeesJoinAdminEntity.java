@@ -66,5 +66,7 @@ public class EmployeesJoinAdminEntity {
 	public void setIs_delete(boolean is_delete) {
 		this.is_delete = is_delete;
 	}
+
+	
 }
 	
