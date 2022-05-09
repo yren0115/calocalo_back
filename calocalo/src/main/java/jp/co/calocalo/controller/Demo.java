@@ -39,11 +39,11 @@ public class Demo {
 		employeesJoinAdmin.setPassword(signUpForm.getPassword());
 		employeesJoinAdmin.setGoal_calories(signUpForm.getGoal_calories());
 		
-		AdminEntity admin = new AdminEntity();
-		admin.setAdmin_id(1);
+		AdminEntity userInfo = new AdminEntity();
+		userInfo.setAdmin_id(1);
 //		admin.setAdmin_status("admin");
 //		adminRepository.save(admin);
-		employeesJoinAdmin.setAdminEntity(admin);
+		employeesJoinAdmin.setAdminEntity(userInfo);
 		
 			return employeesJoinAdmin;
 	}
