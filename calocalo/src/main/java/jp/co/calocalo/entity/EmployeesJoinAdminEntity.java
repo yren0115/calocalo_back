@@ -67,6 +67,8 @@ public class EmployeesJoinAdminEntity {
 		this.is_deleted = is_deleted;
 	}
 
+
+
 	
 }
 	
