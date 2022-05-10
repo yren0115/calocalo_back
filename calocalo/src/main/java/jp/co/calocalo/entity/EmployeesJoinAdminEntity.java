@@ -67,5 +67,10 @@ public class EmployeesJoinAdminEntity {
 		this.is_deleted = is_deleted;
 	}
 
+	public int getEmpAdminId() {
+		return getAdminEntity().getAdmin_id();
+	}
+
+	
 }
 	
