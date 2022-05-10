@@ -6,8 +6,7 @@ public class TotalCaloriesDto {
 	
 	private Integer total_calories;
 	private Date date;
-	private Boolean existance;
-	
+	private Boolean existence;
 	
 	public Integer getTotal_calories() {
 		return total_calories;
@@ -21,13 +20,12 @@ public class TotalCaloriesDto {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Boolean getExistance() {
-		return existance;
+	public Boolean getExistence() {
+		return existence;
 	}
-	public void setExistance(Boolean existance) {
-		this.existance = existance;
+	public void setExistence(Boolean existence) {
+		this.existence = existence;
 	}
-	
 	
 
 }

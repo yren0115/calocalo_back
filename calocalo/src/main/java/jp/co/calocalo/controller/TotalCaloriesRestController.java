@@ -15,7 +15,7 @@ import jp.co.calocalo.repository.CaloriesRecordsJoinEmployeesRepository;
 
 @RestController
 @RequestMapping("/take_calorie")
-public class TotalCaloriesController {
+public class TotalCaloriesRestController {
 	
 	@Autowired
 	CaloriesRecordsJoinEmployeesRepository caloriesRecordsRepository;
@@ -24,21 +24,22 @@ public class TotalCaloriesController {
 	@Nullable
 	public TotalCaloriesDto takeTotalCalories(@PathVariable int emp_id, DateForm dateForm) {
 		
+		TotalCaloriesDto totalCaloriesDto = new TotalCaloriesDto();
 		Date date = dateForm.getDate();
 		Integer totalCalories = caloriesRecordsRepository.findByDateAndEmpId(date, emp_id);
-		TotalCaloriesDto totalCaloriesDto = new TotalCaloriesDto();
 		
+//		すでにtotal_caloriesを持っているかで分岐。
 		if (totalCalories != null) {
 			totalCaloriesDto.setTotal_calories(totalCalories);
 			totalCaloriesDto.setDate(date);
-			totalCaloriesDto.setExistance(true);
+			totalCaloriesDto.setExistence(true);
 			
 			return totalCaloriesDto;
 		}else {
 			
 			totalCaloriesDto.setTotal_calories(null);
 			totalCaloriesDto.setDate(null);
-			totalCaloriesDto.setExistance(false);
+			totalCaloriesDto.setExistence(false);
 			
 			return totalCaloriesDto;
 		}
