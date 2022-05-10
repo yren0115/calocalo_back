@@ -8,7 +8,7 @@ public class UpdateTotalCaloriesForm {
 
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date date;
-	private Integer takeFoodCalorie;
+	private Integer take_calorie;
 	
 	
 	public Date getDate() {
@@ -17,11 +17,11 @@ public class UpdateTotalCaloriesForm {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public Integer getTakeFoodCalorie() {
-		return takeFoodCalorie;
+	public Integer getTake_calorie() {
+		return take_calorie;
 	}
-	public void setTakeFoodCalorie(Integer takeFoodCalorie) {
-		this.takeFoodCalorie = takeFoodCalorie;
+	public void setTake_calorie(Integer take_calorie) {
+		this.take_calorie = take_calorie;
 	}
 	
 	

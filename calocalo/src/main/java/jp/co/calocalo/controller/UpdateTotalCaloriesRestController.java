@@ -27,19 +27,23 @@ public class UpdateTotalCaloriesRestController {
 	
 	@PostMapping("/{emp_id}")
 	@Nullable
-	public CaloriesRecordsJoinEmployeesEntity updateTotalCalories(@PathVariable int emp_id, UpdateTotalCaloriesForm updateTotalCaloriesForm) {
+	public void updateTotalCalories(@PathVariable int emp_id, UpdateTotalCaloriesForm updateTotalCaloriesForm) {
 		
+//		パラメータ(emp_id,dat, )を変数に入れる
 		Date date = updateTotalCaloriesForm.getDate();
-		Integer takeFoodCalorie = updateTotalCaloriesForm.getTakeFoodCalorie();
+		Integer takeCalorie = updateTotalCaloriesForm.getTake_calorie();
 		
+//		上記パラメータをからtotal_caloriesとListｄ一括データをとる
 		Integer totalCalories = caloriesRecordsRepository.findByDateAndEmpId(date, emp_id);
 		CaloriesRecordsJoinEmployeesEntity getCaloriesRecords = caloriesRecordsRepository.findRecordsByDateAndEmpId(date, emp_id);
 		
+//		新データを入れるインスタンスを作成
 		CaloriesRecordsJoinEmployeesEntity newCaloriesRecords = new CaloriesRecordsJoinEmployeesEntity();
 		EmployeesJoinAdminEntity employee = employeesRepository.getById(emp_id);
 		
+//		すでにtotal_caloriesがあるかで分岐
 		if (totalCalories != null) {
-			Integer newTotalCalories = totalCalories + takeFoodCalorie;
+			Integer newTotalCalories = totalCalories + takeCalorie;
 			
 			newCaloriesRecords.setRecord_id(getCaloriesRecords.getRecord_id());
 			newCaloriesRecords.setEmployeesJoinAdminEntity(employee);
@@ -47,18 +51,13 @@ public class UpdateTotalCaloriesRestController {
 			newCaloriesRecords.setDate(date);
 			
 			caloriesRecordsRepository.save(newCaloriesRecords);
-			
-			return newCaloriesRecords;
 		}else {
 			
 			newCaloriesRecords.setEmployeesJoinAdminEntity(employee);
-			newCaloriesRecords.setTotal_calories(takeFoodCalorie);
+			newCaloriesRecords.setTotal_calories(takeCalorie);
 			newCaloriesRecords.setDate(date);
 			
 			caloriesRecordsRepository.save(newCaloriesRecords);
-			
-			return newCaloriesRecords;
-			
 		}
 		
 	}
