@@ -1,7 +1,6 @@
 package jp.co.calocalo.form;
 
 public class LoginForm {
-
 	
 	private String password;
 
@@ -12,9 +11,5 @@ public class LoginForm {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-
-	
-	
 
 }

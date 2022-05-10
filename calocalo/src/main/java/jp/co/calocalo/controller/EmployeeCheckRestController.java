@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jp.co.calocalo.Dto.EmpCheckDto;
 import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
 
 @RestController
@@ -18,16 +19,17 @@ public class EmployeeCheckRestController {
     
 //  emp_idがすでにあるかチェック
     @GetMapping("/{emp_id}")
-    public Boolean employeeCheck(@PathVariable int emp_id) {
+    public EmpCheckDto employeeCheck(@PathVariable int emp_id) {
         
+    	EmpCheckDto empCheckDto = new EmpCheckDto();
+    	
         if (EmployeeRepository.existsById(emp_id)) {
-            Boolean existance = true;
-            
-            return existance;
+        	
+            empCheckDto.setExistence(true);
+            return empCheckDto;
         }else {
-            Boolean existance = false;
-            
-            return existance;
+        	empCheckDto.setExistence(false);            
+            return empCheckDto;
             
         }
     }

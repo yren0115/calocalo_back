@@ -5,7 +5,7 @@ import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +25,7 @@ public class UpdateTotalCaloriesRestController {
 	@Autowired
 	EmployeesJoinAdminRepository employeesRepository;
 	
-	@PostMapping("/{emp_id}")
+	@PutMapping("/{emp_id}")
 	@Nullable
 	public void updateTotalCalories(@PathVariable int emp_id, UpdateTotalCaloriesForm updateTotalCaloriesForm) {
 		

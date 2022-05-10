@@ -13,7 +13,7 @@ import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
 
 @RestController
 @RequestMapping("/login")
-public class LoginController {
+public class LoginRestController {
 	
 	@Autowired
 	EmployeesJoinAdminRepository employeesRepository;

@@ -6,8 +6,6 @@ public class LoginDto {
 	private Integer admin_id;
 	
 	
-	
-	
 	public boolean isLogin_status() {
 		return login_status;
 	}
