@@ -2,7 +2,7 @@ package jp.co.calocalo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jp.co.calocalo.entity.AdminEntity;
@@ -21,7 +21,7 @@ public class ResetGoalCaloriesRestController {
 	@Autowired EmployeesJoinAdminRepository employeesJoinAdminRepository;
 
 	//カロリーの再設定
-	@PostMapping("/mypage/setting/{emp_id}")
+	@PutMapping("/mypage/setting/{emp_id}")
 	public  void signUp(@PathVariable int emp_id, GoalCaloUpdateForm form) {
 		
 		EmployeesJoinAdminEntity reCaloEntity = new EmployeesJoinAdminEntity();
