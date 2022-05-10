@@ -3,14 +3,15 @@ package jp.co.calocalo.form;
 public class GoalCaloUpdateForm {
 
 	
-	private  int goalCalories;
+	private  int goal_calorie;
 
-	public int getGoalCalories() {
-		return goalCalories;
+	public int getGoal_calorie() {
+		return goal_calorie;
 	}
 
-	public void setGoalCalories(int goalCalories) {
-		this.goalCalories = goalCalories;
+	public void setGoal_calorie(int goal_calorie) {
+		this.goal_calorie = goal_calorie;
 	}
+
 	
 }
