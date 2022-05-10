@@ -14,5 +14,8 @@ public interface CaloriesRecordsJoinEmployeesRepository extends
 	
 	@Query(value = "SELECT total_calories FROM calories_records WHERE date = :date AND emp_id = :emp_id", nativeQuery = true)
 	Integer findByDateAndEmpId(@Param("date") Date date, @Param("emp_id") int emp_id);
+	
+	@Query(value = "SELECT * FROM calories_records WHERE date = :date AND emp_id = :emp_id", nativeQuery = true)
+	CaloriesRecordsJoinEmployeesEntity findRecordsByDateAndEmpId(@Param("date") Date date, @Param("emp_id") int emp_id);
 
 }
