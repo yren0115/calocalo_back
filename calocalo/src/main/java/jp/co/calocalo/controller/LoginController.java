@@ -22,39 +22,32 @@ public class LoginController {
 	@PostMapping("/{emp_id}")
 	public LoginDto loginCheck(@PathVariable int emp_id,LoginForm loginForm) {
 		
+		LoginDto loginDto = new LoginDto();
+		
+//		emp_idから、データの存在を確認
 		if(employeesRepository.existsById(emp_id)) {
 			
 			EmployeesJoinAdminEntity employee =  employeesRepository.getById(emp_id);
-			
 			String empPass = employee.getPassword();
 			
+//			パラメーターのpassとDBのpassを比較。is_deletedの確認。
 			if(loginForm.getPassword().equals(empPass) && employee.isIs_deleted() == false) {
 				
-				LoginDto loginDto = new LoginDto();
-				
-				int empAdminId = employee.getEmpAdminId();
-				
 				loginDto.setLogin_status(true);
-				int employeeAdminId = empAdminId;
-				loginDto.setAdmin_id(employeeAdminId);
+				loginDto.setAdmin_id(employee.getEmpAdminId());
 				
 				return loginDto;
 			}else {
-				LoginDto loginDto = new LoginDto();
 				
 				loginDto.setLogin_status(false);
-				int employeeAdminId = 000;
-				loginDto.setAdmin_id(employeeAdminId);
+				loginDto.setAdmin_id(null);
 				
 				return loginDto;
 			}
 		}else {
 			
-			LoginDto loginDto = new LoginDto();
-			
 			loginDto.setLogin_status(false);
-			int employeeAdminId = 000;
-			loginDto.setAdmin_id(employeeAdminId);
+			loginDto.setAdmin_id(null);		
 			
 			return loginDto;
 			
@@ -62,22 +55,4 @@ public class LoginController {
 		
 	}
 	
-//	@GetMapping("{emp_id}")
-//	public int loginCheck(@PathVariable int emp_id) {
-//		
-//		
-//		if(employeesRepository.existsById(emp_id)) {
-//			
-//			EmployeesJoinAdminEntity employee =  employeesRepository.getById(emp_id);
-//			
-//			int employeeId = employee.getEmp_id();
-//			
-//			return employeeId;
-//		}
-//		
-//		 
-//		 return 8;
-//		
-//	}
-
 }
