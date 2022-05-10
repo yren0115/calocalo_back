@@ -12,7 +12,7 @@ import jp.co.calocalo.repository.FoodListRepository;
 
 @RestController
 @RequestMapping("/food_list")
-public class FoodListController {
+public class FoodListRestController {
 	
 	@Autowired
 	FoodListRepository foodListRepository;
