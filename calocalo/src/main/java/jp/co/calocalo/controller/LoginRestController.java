@@ -16,7 +16,7 @@ import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
 
 @RestController
 @RequestMapping("/login")
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin
 public class LoginRestController {
 	
 	@Autowired
