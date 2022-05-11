@@ -35,7 +35,7 @@ public class UpdateTotalCaloriesRestController {
 		Date date = updateTotalCaloriesForm.getDate();
 		Integer takeCalorie = updateTotalCaloriesForm.getTake_calorie();
 		
-//		上記パラメータをからtotal_caloriesとListｄ一括データをとる
+//		上記パラメータをからtotal_caloriesとList一括データをとる
 		Integer totalCalories = caloriesRecordsRepository.findByDateAndEmpId(date, emp_id);
 		CaloriesRecordsJoinEmployeesEntity getCaloriesRecords = caloriesRecordsRepository.findRecordsByDateAndEmpId(date, emp_id);
 		
