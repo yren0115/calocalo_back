@@ -1,5 +1,8 @@
 package jp.co.calocalo.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +21,15 @@ class AdminAddFoodlistRestController {
 	@Autowired EmployeesJoinAdminRepository employeesJoinAdminRepository;
 	
 	@PostMapping
-	public void registFoodAndCalories(AdminFoodListForm adminFoodListForm) {
+	public Map<String, Boolean> registFoodAndCalories(AdminFoodListForm adminFoodListForm) {
 		FoodListEntity newFood = formToAddFoodListEntity(adminFoodListForm);
 		foodListRepository.save(newFood);
+		
+		Map<String, Boolean> success = new HashMap<>();
+		success.put("success", true);
+		
+		return success;
+		
 	}
 	
 	private FoodListEntity formToAddFoodListEntity(AdminFoodListForm adminFoodList) {

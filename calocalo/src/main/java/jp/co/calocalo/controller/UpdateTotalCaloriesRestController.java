@@ -1,6 +1,8 @@
 package jp.co.calocalo.controller;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -27,7 +29,7 @@ public class UpdateTotalCaloriesRestController {
 	
 	@PutMapping("/{emp_id}")
 	@Nullable
-	public void updateTotalCalories(@PathVariable int emp_id, UpdateTotalCaloriesForm updateTotalCaloriesForm) {
+	public Map<String, Boolean> updateTotalCalories(@PathVariable int emp_id, UpdateTotalCaloriesForm updateTotalCaloriesForm) {
 		
 //		パラメータ(emp_id,dat, )を変数に入れる
 		Date date = updateTotalCaloriesForm.getDate();
@@ -51,6 +53,12 @@ public class UpdateTotalCaloriesRestController {
 			newCaloriesRecords.setDate(date);
 			
 			caloriesRecordsRepository.save(newCaloriesRecords);
+			
+			Map<String, Boolean> success = new HashMap<>();
+			success.put("success", true);
+			
+			return success;
+			
 		}else {
 			
 			newCaloriesRecords.setEmployeesJoinAdminEntity(employee);
@@ -58,6 +66,12 @@ public class UpdateTotalCaloriesRestController {
 			newCaloriesRecords.setDate(date);
 			
 			caloriesRecordsRepository.save(newCaloriesRecords);
+			
+			Map<String, Boolean> success = new HashMap<>();
+			success.put("success", true);
+			
+			return success;
+			
 		}
 		
 	}
