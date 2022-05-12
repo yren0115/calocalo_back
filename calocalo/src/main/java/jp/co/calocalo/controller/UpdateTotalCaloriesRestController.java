@@ -37,9 +37,8 @@ public class UpdateTotalCaloriesRestController {
 	public Map<String, Boolean> updateTotalCalories(@PathVariable int emp_id, @RequestBody UpdateTotalCaloriesForm updateTotalCaloriesForm) {
 		
 //		パラメータ(emp_id,dat, )を変数に入れる
-		System.out.println("###############\n###############");
-		Date date = updateTotalCaloriesForm.getDate();System.out.println(date);
-		System.out.println("###############\n###############");
+		Date date = updateTotalCaloriesForm.getDate();
+		
 		Integer takeCalorie = updateTotalCaloriesForm.getTake_calorie();
 		
 //		上記パラメータをからtotal_caloriesとList一括データをとる

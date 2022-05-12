@@ -23,8 +23,10 @@ public class SignUpRestController {
 	@Autowired EmployeesJoinAdminRepository employeesJoinAdminRepository;
 	
 //	データの保存
+
 	@PostMapping
 	public  Map<String, Boolean> signUp(@RequestBody SignUpForm signUpForm) {
+		
 		EmployeesJoinAdminEntity employeesJoinAdmin = formToAddEmployeesJoinAdminEntity(signUpForm);
 		employeesJoinAdminRepository.save(employeesJoinAdmin);
 		
