@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +19,7 @@ import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
 
 @RestController
 @RequestMapping("/mypage/setting")
+@CrossOrigin
 public class ResetGoalCaloriesRestController {
 
 	@Autowired EmployeesJoinAdminRepository employeesAdminRepository;
@@ -27,7 +30,7 @@ public class ResetGoalCaloriesRestController {
 
 	//カロリーの再設定
 	@PutMapping("/{emp_id}")
-	public  Map<String, Boolean> signUp(@PathVariable int emp_id, GoalCaloUpdateForm form) {
+	public  Map<String, Boolean> signUp(@PathVariable int emp_id, @RequestBody GoalCaloUpdateForm form) {
 		
 		EmployeesJoinAdminEntity reCaloEntity = new EmployeesJoinAdminEntity();
 		AdminEntity admin = adminRepository.getById(1);

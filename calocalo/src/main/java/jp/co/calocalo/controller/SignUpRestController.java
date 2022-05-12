@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,13 +17,14 @@ import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
 
 @RestController
 @RequestMapping("/signup")
+@CrossOrigin
 public class SignUpRestController {
 
 	@Autowired EmployeesJoinAdminRepository employeesJoinAdminRepository;
 	
 //	データの保存
 	@PostMapping
-	public  Map<String, Boolean> signUp(SignUpForm signUpForm) {
+	public  Map<String, Boolean> signUp(@RequestBody SignUpForm signUpForm) {
 		EmployeesJoinAdminEntity employeesJoinAdmin = formToAddEmployeesJoinAdminEntity(signUpForm);
 		employeesJoinAdminRepository.save(employeesJoinAdmin);
 		
@@ -33,7 +36,7 @@ public class SignUpRestController {
 	}
 	
 //	インスタンスに新データを挿入するメソッド
-	private EmployeesJoinAdminEntity formToAddEmployeesJoinAdminEntity(SignUpForm signUpForm) {
+	private EmployeesJoinAdminEntity formToAddEmployeesJoinAdminEntity(@RequestBody SignUpForm signUpForm) {
 		EmployeesJoinAdminEntity employeesJoinAdmin = new EmployeesJoinAdminEntity();
 	
 		employeesJoinAdmin.setEmp_id(signUpForm.getEmp_id());

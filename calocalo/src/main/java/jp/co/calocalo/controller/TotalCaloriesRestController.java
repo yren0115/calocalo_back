@@ -4,8 +4,10 @@ import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +17,7 @@ import jp.co.calocalo.repository.CaloriesRecordsJoinEmployeesRepository;
 
 @RestController
 @RequestMapping("/take_calorie")
+@CrossOrigin
 public class TotalCaloriesRestController {
 	
 	@Autowired
@@ -22,7 +25,7 @@ public class TotalCaloriesRestController {
 
 	@PostMapping("/{emp_id}")
 	@Nullable
-	public TotalCaloriesDto takeTotalCalories(@PathVariable int emp_id, DateForm dateForm) {
+	public TotalCaloriesDto takeTotalCalories(@PathVariable int emp_id, @RequestBody DateForm dateForm) {
 		
 		TotalCaloriesDto totalCaloriesDto = new TotalCaloriesDto();
 		Date date = dateForm.getDate();

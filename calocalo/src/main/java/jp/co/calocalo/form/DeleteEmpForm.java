@@ -1,7 +1,10 @@
 package jp.co.calocalo.form;
 
-public class DeleteEmpForm {
+import java.io.Serializable;
+
+public class DeleteEmpForm implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private int empId;
 
 	public int getEmpId() {

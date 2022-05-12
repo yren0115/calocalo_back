@@ -1,8 +1,10 @@
 package jp.co.calocalo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +15,7 @@ import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
 
 @RestController
 @RequestMapping("/login")
+@CrossOrigin
 public class LoginRestController {
 	
 	@Autowired
@@ -20,7 +23,7 @@ public class LoginRestController {
 	
 	
 	@PostMapping("/{emp_id}")
-	public LoginDto loginCheck(@PathVariable int emp_id,LoginForm loginForm) {
+	public LoginDto loginCheck(@PathVariable int emp_id, @RequestBody LoginForm loginForm) {
 		
 		LoginDto loginDto = new LoginDto();
 		

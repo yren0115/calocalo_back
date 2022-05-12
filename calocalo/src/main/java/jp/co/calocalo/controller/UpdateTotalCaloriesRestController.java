@@ -6,8 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +21,7 @@ import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
 
 @RestController
 @RequestMapping("submit/food")
+@CrossOrigin
 public class UpdateTotalCaloriesRestController {
 	
 	@Autowired
@@ -29,7 +32,7 @@ public class UpdateTotalCaloriesRestController {
 	
 	@PutMapping("/{emp_id}")
 	@Nullable
-	public Map<String, Boolean> updateTotalCalories(@PathVariable int emp_id, UpdateTotalCaloriesForm updateTotalCaloriesForm) {
+	public Map<String, Boolean> updateTotalCalories(@PathVariable int emp_id, @RequestBody UpdateTotalCaloriesForm updateTotalCaloriesForm) {
 		
 //		パラメータ(emp_id,dat, )を変数に入れる
 		Date date = updateTotalCaloriesForm.getDate();
