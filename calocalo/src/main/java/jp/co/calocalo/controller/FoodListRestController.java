@@ -1,6 +1,8 @@
 package jp.co.calocalo.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,10 +22,14 @@ public class FoodListRestController {
 	FoodListRepository foodListRepository;
 	
 	@GetMapping
-	public List<FoodListEntity> findFoodList() {
+	public Map<String, List<FoodListEntity>> findFoodList() {
 		
 		List<FoodListEntity> foodList = foodListRepository.findAll();
 		
-		return foodList;
+		Map<String, List<FoodListEntity>> foodListMap = new HashMap<>();
+		
+		foodListMap.put("foodList", foodList);
+		
+		return foodListMap;
 	}
 }
