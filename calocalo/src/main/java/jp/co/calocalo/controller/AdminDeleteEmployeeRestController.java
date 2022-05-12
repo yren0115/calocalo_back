@@ -14,7 +14,7 @@ import jp.co.calocalo.entity.EmployeesJoinAdminEntity;
 import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
 
 @RestController
-@RequestMapping("admin/delete/employee")
+@RequestMapping("/admin/delete/employee")
 @CrossOrigin
 public class AdminDeleteEmployeeRestController {
 		

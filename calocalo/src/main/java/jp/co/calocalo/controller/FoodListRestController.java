@@ -27,8 +27,8 @@ public class FoodListRestController {
 		List<FoodListEntity> foodList = foodListRepository.findAll();
 		
 		Map<String, List<FoodListEntity>> foodListMap = new HashMap<>();
-
-		foodListMap.put("food_list",  foodList);
+		foodListMap.put("foodList", foodList);
+		
 		return foodListMap;
 	}
 }
