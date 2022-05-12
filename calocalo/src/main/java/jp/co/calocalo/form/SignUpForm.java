@@ -1,7 +1,11 @@
 package jp.co.calocalo.form;
 
-public class SignUpForm {
+import java.io.Serializable;
 
+public class SignUpForm implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	private int emp_id;
 	private String password;
 	private int goal_calories;

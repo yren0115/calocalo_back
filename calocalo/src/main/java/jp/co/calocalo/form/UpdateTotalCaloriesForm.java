@@ -1,11 +1,14 @@
 package jp.co.calocalo.form;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class UpdateTotalCaloriesForm {
-
+public class UpdateTotalCaloriesForm implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date date;
 	private Integer take_calorie;

@@ -26,7 +26,7 @@ public class LoginRestController {
 	@PostMapping("/{emp_id}")
 	@ResponseBody
 	public LoginDto loginCheck(@PathVariable int emp_id,@RequestBody LoginForm loginForm) {
-		
+
 		LoginDto loginDto = new LoginDto();
 		
 //		emp_idから、データの存在を確認

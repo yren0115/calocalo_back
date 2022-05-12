@@ -1,7 +1,10 @@
 package jp.co.calocalo.form;
 
-public class ResetGoalCaloriesForm {
+import java.io.Serializable;
 
+public class ResetGoalCaloriesForm implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	
 	private int goalCalories;
 	

@@ -1,7 +1,11 @@
 package jp.co.calocalo.form;
 
-public class AdminFoodListForm {
+import java.io.Serializable;
+
+public class AdminFoodListForm implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+		
 	private String food_name;
 	private int food_calorie;
 	

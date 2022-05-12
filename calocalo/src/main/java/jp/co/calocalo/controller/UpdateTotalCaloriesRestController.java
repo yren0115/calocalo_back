@@ -1,12 +1,17 @@
 package jp.co.calocalo.controller;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jp.co.calocalo.entity.CaloriesRecordsJoinEmployeesEntity;
@@ -17,6 +22,7 @@ import jp.co.calocalo.repository.EmployeesJoinAdminRepository;
 
 @RestController
 @RequestMapping("submit/food")
+@CrossOrigin
 public class UpdateTotalCaloriesRestController {
 	
 	@Autowired
@@ -26,14 +32,17 @@ public class UpdateTotalCaloriesRestController {
 	EmployeesJoinAdminRepository employeesRepository;
 	
 	@PutMapping("/{emp_id}")
+	@ResponseBody
 	@Nullable
-	public void updateTotalCalories(@PathVariable int emp_id, UpdateTotalCaloriesForm updateTotalCaloriesForm) {
+	public Map<String, Boolean> updateTotalCalories(@PathVariable int emp_id, @RequestBody UpdateTotalCaloriesForm updateTotalCaloriesForm) {
 		
 //		パラメータ(emp_id,dat, )を変数に入れる
-		Date date = updateTotalCaloriesForm.getDate();
+		System.out.println("###############\n###############");
+		Date date = updateTotalCaloriesForm.getDate();System.out.println(date);
+		System.out.println("###############\n###############");
 		Integer takeCalorie = updateTotalCaloriesForm.getTake_calorie();
 		
-//		上記パラメータをからtotal_caloriesとListｄ一括データをとる
+//		上記パラメータをからtotal_caloriesとList一括データをとる
 		Integer totalCalories = caloriesRecordsRepository.findByDateAndEmpId(date, emp_id);
 		CaloriesRecordsJoinEmployeesEntity getCaloriesRecords = caloriesRecordsRepository.findRecordsByDateAndEmpId(date, emp_id);
 		
@@ -51,6 +60,12 @@ public class UpdateTotalCaloriesRestController {
 			newCaloriesRecords.setDate(date);
 			
 			caloriesRecordsRepository.save(newCaloriesRecords);
+			
+			Map<String, Boolean> success = new HashMap<>();
+			success.put("success", true);
+			
+			return success;
+			
 		}else {
 			
 			newCaloriesRecords.setEmployeesJoinAdminEntity(employee);
@@ -58,6 +73,12 @@ public class UpdateTotalCaloriesRestController {
 			newCaloriesRecords.setDate(date);
 			
 			caloriesRecordsRepository.save(newCaloriesRecords);
+			
+			Map<String, Boolean> success = new HashMap<>();
+			success.put("success", true);
+			
+			return success;
+			
 		}
 		
 	}
