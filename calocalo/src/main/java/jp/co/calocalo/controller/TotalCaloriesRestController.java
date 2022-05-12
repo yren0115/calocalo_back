@@ -16,7 +16,7 @@ import jp.co.calocalo.form.DateForm;
 import jp.co.calocalo.repository.CaloriesRecordsJoinEmployeesRepository;
 
 @RestController
-@RequestMapping("/take_calorie")
+@RequestMapping("/employee/take_calorie")
 @CrossOrigin
 public class TotalCaloriesRestController {
 	
